@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://shmup_graphics_pack/graphics/bgGradient.png" type="Texture" id=2]
+[ext_resource path="res://Player.gd" type="Script" id=3]
+[ext_resource path="res://shmup_graphics_pack/graphics/player.png" type="Texture" id=4]
+[ext_resource path="res://Projectile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Incomer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Incomer.gd" type="Script" id=7]
+[ext_resource path="res://IncomerSpawnTimer.gd" type="Script" id=8]
+[ext_resource path="res://shmup_graphics_pack/graphics/gameOver.png" type="Texture" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+extents = Vector2( 59.7119, 39.3645 )
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="BackgroundSprite" type="Sprite" parent="."]
+position = Vector2( 240, 400 )
+scale = Vector2( 480, 1e-005 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2( 240, 700 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Player"]
+texture = ExtResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+shape = SubResource( 1 )
+
+[node name="Projectile" parent="." instance=ExtResource( 5 )]
+
+[node name="Projectile2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 50, 0 )
+
+[node name="Projectile3" parent="." instance=ExtResource( 5 )]
+position = Vector2( -50, 0 )
+
+[node name="Projectile4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 100, 0 )
+
+[node name="Incomer" parent="." instance=ExtResource( 6 )]
+position = Vector2( 200, -50 )
+script = ExtResource( 7 )
+
+[node name="IncomerSpawnTimer" type="Timer" parent="."]
+autostart = true
+script = ExtResource( 8 )
+
+[node name="ScoreLabel" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+rect_scale = Vector2( 2, 2 )
+text = "Score : 0"
+
+[node name="GameOverSprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 227, 117 )
+texture = ExtResource( 9 )
+
+[connection signal="timeout" from="IncomerSpawnTimer" to="IncomerSpawnTimer" method="_on_IncomerSpawnTimer_timeout"]
