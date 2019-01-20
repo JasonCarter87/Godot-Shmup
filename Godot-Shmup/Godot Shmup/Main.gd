@@ -12,5 +12,11 @@ func _ready():
 func _process(delta):
 	$"ScoreLabel".text = "Score: " + str(global.score)
 	
+	if global.isGameOver == true:
+		$"GameOverSprite".visible = true
+	
 	if Input.is_action_just_pressed("restart_game") and global.isGameOver:
 		go.restart_scene()
+		global.score = 0
+		global.isGameOver = false
+		

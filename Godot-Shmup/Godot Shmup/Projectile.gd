@@ -8,7 +8,11 @@ extends Node2D
 func _ready():
 	pass # Replace with function body.
 
+func area_entered(otherArea):
+	if otherArea.name == "IncomerArea":
+		go.destroy(self)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	self.position.y -=5
 	pass
+	

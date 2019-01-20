@@ -7,8 +7,8 @@
 [ext_resource path="res://Projectile.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Incomer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Incomer.gd" type="Script" id=7]
-[ext_resource path="res://IncomerSpawnTimer.gd" type="Script" id=8]
-[ext_resource path="res://shmup_graphics_pack/graphics/gameOver.png" type="Texture" id=9]
+[ext_resource path="res://shmup_graphics_pack/graphics/gameOver.png" type="Texture" id=8]
+[ext_resource path="res://IncomerSpawnTimer.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -55,10 +55,6 @@ position = Vector2( 100, 0 )
 position = Vector2( 200, -50 )
 script = ExtResource( 7 )
 
-[node name="IncomerSpawnTimer" type="Timer" parent="."]
-autostart = true
-script = ExtResource( 8 )
-
 [node name="ScoreLabel" type="Label" parent="."]
 margin_right = 40.0
 margin_bottom = 14.0
@@ -68,6 +64,10 @@ text = "Score : 0"
 [node name="GameOverSprite" type="Sprite" parent="."]
 visible = false
 position = Vector2( 227, 117 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
+
+[node name="IncomerSpawnTimer" type="Timer" parent="."]
+autostart = true
+script = ExtResource( 9 )
 
 [connection signal="timeout" from="IncomerSpawnTimer" to="IncomerSpawnTimer" method="_on_IncomerSpawnTimer_timeout"]

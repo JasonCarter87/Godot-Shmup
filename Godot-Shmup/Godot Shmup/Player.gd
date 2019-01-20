@@ -19,3 +19,9 @@ func _process(delta):
 		newProjectile.position = self.position
 		self.get_parent().add_child(newProjectile)
 	pass
+	
+func area_entered(otherArea):
+	if otherArea.name == "IncomerArea":
+		go.destroy(self)
+		print ("Game Over")
+		global.isGameOver = true
