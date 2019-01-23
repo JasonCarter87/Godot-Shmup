@@ -15,13 +15,14 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("fire_projectile"):
 		print("pew")
-		var newProjectile = load("res://Projectile.tscn").instance()
-		newProjectile.position = self.position
-		self.get_parent().add_child(newProjectile)
-		
-		var newBuddyProjectile = load("res://Projectile.tscn").instance()
-		newBuddyProjectile.position = get_node("PlayerBuddy/Sprite").position
-		self.get_node("PlayerBuddy").add_child(newBuddyProjectile)
+		#var newProjectile = load("res://Projectile.tscn").instance()
+		#newProjectile.position = self.position
+		#self.get_parent().add_child(newProjectile)
+		go.spawn_instance("Projectile", self.position.x, self.position.y)
+		#var newBuddyProjectile = load("res://Projectile.tscn").instance()
+		#newBuddyProjectile.position = get_node("PlayerBuddy/Sprite").position
+		#self.get_parent().add_child(newBuddyProjectile)
+		go.spawn_instance("Projectile", self.position.x + 80, self.position.y + 20) 
 	pass
 	
 func area_entered(otherArea):
