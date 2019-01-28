@@ -11,7 +11,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	self.position.y += 2
+	if(self.position.y < 200):
+		self.position.y += 2
 	pass
 func area_entered(otherArea):
 	self.health -= 1
