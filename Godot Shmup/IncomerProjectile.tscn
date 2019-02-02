@@ -14,10 +14,10 @@ script = ExtResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
-[node name="ProjectileArea" type="Area2D" parent="."]
+[node name="IncomerProjectileArea" type="Area2D" parent="."]
 editor/display_folded = true
 position = Vector2( 0.149891, 1.90735e-006 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IncomerProjectileArea"]
 shape = SubResource( 1 )
 
