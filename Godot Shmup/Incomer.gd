@@ -15,14 +15,21 @@ func _process(delta):
 		self.position.y += 2
 	pass
 func area_entered(otherArea):
-	self.health -= 1
-	if self.health < 1:
-		go.destroy(self)
+	if otherArea.name == "ProjectileArea":
+		self.health -= 1
+		global.score += 10
+		if self.health < 1:
+			go.destroy(self)
 	 	#print("Yikes thats a collision")
-	global.score += 10
 	print(global.score)
 	
 	if otherArea.get_parent().name == "Player":
 		print("Game Over")
 		global.isGameOver = true
 	
+
+
+func _on_Timer_timeout():
+	if(self.position.y == 250):
+		go.spawn_instance("IncomerProjectile", self.position.x, self.position.y)
+	pass # Replace with function body.
