@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://IncomerProjectile.gd" type="Script" id=1]
+[ext_resource path="res://shmup_graphics_pack/graphics/projectile.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+radius = 5.15743
+height = 28.4948
+
+[node name="IncomerProjectile" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="IncomerProjectileArea" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 0.149891, 1.90735e-006 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IncomerProjectileArea"]
+shape = SubResource( 1 )
+
