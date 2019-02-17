@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Incomer.gd" type="Script" id=1]
+[ext_resource path="res://shmup_graphics_pack/graphics/incomer.png" type="Texture" id=2]
+[ext_resource path="res://shmup_graphics_pack/graphics/frozenIncomer.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+extents = Vector2( 54.0746, 46.5212 )
+
+[node name="Incomer" type="Node2D"]
+position = Vector2( 0, 3.3241 )
+script = ExtResource( 1 )
+
+[node name="Heated" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="IncomerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IncomerArea"]
+position = Vector2( 1.10803, 0 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Frozen" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 3 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,10 @@
+New Art:
+Star background made in piskel
+Frozen Projectile made in piskel
+Frozen Incomer made in piskel
+
+New Mechanics:
+
+Projectile that is fired on right click that freezes incomers in place
+
+Now max of 8 incomers at a time, and can be frozen and taken out one at a time
